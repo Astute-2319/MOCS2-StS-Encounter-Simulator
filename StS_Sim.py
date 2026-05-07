@@ -52,7 +52,7 @@ class Simulation:
         self.states = {'vulnerable':0, 'weakened': 0, 'strength':0}
         self.all_cards = data.all_cards
         self.enemy = StS_Enemies.Enemy()
-        self.starting_deck = data.starting_deck
+        self.starting_deck = data.starting_deck.copy()
         self.hand = []
         self.current_deck = self.starting_deck.copy()
         self.current_discard = self.starting_deck.copy()
