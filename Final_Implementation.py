@@ -35,10 +35,13 @@ if __name__ == '__main__':
                 sim = StS_Sim.Simulation()
                 if args.cultist:
                     sim.enemy.select_enemy('Cultist')
+                    sim.enemy_hp = sim.enemy.health
                 elif args.jawworm:
                     sim.enemy.select_enemy('Jaw Worm')
+                    sim.enemy_hp = sim.enemy.health
                 else:
                     sim.enemy.select_enemy('Cultist')
+                    sim.enemy_hp = sim.enemy.health
                 sim.play_type = t
                 sim.add_card('Bludgeon')
                 turns, curr_hp, player_hp_change, enemy_hp_change = sim.simulate()
