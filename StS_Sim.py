@@ -430,7 +430,7 @@ class Simulation:
             enemy_hp_change.append(self.enemy_hp)
 
             # If enemy dies, it does not attack
-            if self.enemy_hp < 0:
+            if self.enemy_hp <= 0:
                 break
 
             if block < 0:
