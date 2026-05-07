@@ -358,10 +358,11 @@ class Simulation:
             Keyword arguments: None
             Returns: None
         """
+        temporary_states = ['vulnerable', 'weakened']
         for card in range(len(self.hand)):
             card_name = list(self.hand[card].keys())[0]
             self.current_discard[card_name] = self.current_discard[card_name]+1
-        for state in self.states:
+        for state in temporary_states:
             if self.states[state] > 0:
                 self.states[state] -= 1
         self.hand = []
