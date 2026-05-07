@@ -400,6 +400,20 @@ class Simulation:
                     self.states = saved_states
                     self.enemy.last_move = saved_last_move
 
+            # If jaw worm is acting, guess which move was last selected
+            # IMPORTANT: This may not choose the same move as was actually done
+            # Since our PGF returns a weighted sum of all possible moves,
+            # we cannot "commit" to a single move. This will have to do for now
+            if self.enemy.name == 'Jaw Worm' and self.curr_turn > 0:
+                bellow_probs = {'Chomp': 0.59, 'Bellow': 0.0, 'Thrash': 0.45}
+                thrash_probs = {'Chomp': 0.41, 'Bellow': 0.56, 'Thrash': 0.30}
+                chomp_probs  = {'Chomp': 0.00, 'Bellow': 0.44, 'Thrash': 0.25}
+                last = self.enemy.last_move if self.enemy.last_move else 'Thrash'
+                self.enemy.last_move = np.random.choice(
+                    ['Bellow', 'Thrash', 'Chomp'],
+                    p=[bellow_probs[last], thrash_probs[last], chomp_probs[last]]
+    )
+
             pn1n2 = abs(np.fft.fft2(M_grid)) / (self.blk_max * self.dmg_max)
             pn1n2_fixed = self.shift_block(pn1n2, self.max_hp)
             pn1n2_fixed = self.shift_damage(pn1n2_fixed, self.dmg_center)
