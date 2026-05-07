@@ -49,11 +49,11 @@ if __name__ == '__main__':
             plt.figure()
             plt.hist(turns_taken_vals_std)
             plt.title(f'Distribution of turns taken -- {t}')
-            plt.savefig(f'Multi_Player_Vs_{sim.enemy.name}_{t}_Turns')
+            plt.savefig(f'Images/Multi_Player_Vs_{sim.enemy.name}_{t}_Turns')
             plt.figure()
             plt.hist(player_hp_vals_std)
             plt.title(f'Distribution of player health values -- {t}')
-            plt.savefig(f'Multi_Player_Vs_{sim.enemy.name}_{t}_Health')
+            plt.savefig(f'Images/Multi_Player_Vs_{sim.enemy.name}_{t}_Health')
     
     if args.single:
         for t in types:
@@ -82,5 +82,5 @@ if __name__ == '__main__':
             plt.xlabel('Turn')
             plt.ylabel('Health Total')
             plt.legend()
-            plt.savefig(f'Player_Vs_{sim.enemy.name}_{t}')
+            plt.savefig(f'Images/Player_Vs_{sim.enemy.name}_{t}')
             plt.clf()
