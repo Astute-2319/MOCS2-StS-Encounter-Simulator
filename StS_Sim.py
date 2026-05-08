@@ -412,7 +412,7 @@ class Simulation:
                 self.enemy.last_move = np.random.choice(
                     ['Bellow', 'Thrash', 'Chomp'],
                     p=[bellow_probs[last], thrash_probs[last], chomp_probs[last]]
-    )
+                )
 
             pn1n2 = abs(np.fft.fft2(M_grid)) / (self.blk_max * self.dmg_max)
             pn1n2_fixed = self.shift_block(pn1n2, self.max_hp)
